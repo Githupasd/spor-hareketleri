@@ -37,7 +37,7 @@ body{
   cursor:none;
 }
 
-/* ── CUSTOM CURSOR ── */
+/* CUSTOM CURSOR */
 #cursor{
   width:12px;height:12px;
   background:var(--gold);
@@ -60,14 +60,14 @@ body{
 body:has(.card:hover) #cursor{width:60px;height:60px;background:rgba(232,184,75,0.15)}
 body:has(.card:hover) #cursor-ring{opacity:0}
 
-/* ── PARTICLES CANVAS ── */
+/* PARTICLES CANVAS */
 #particleCanvas{
   position:fixed;inset:0;
   pointer-events:none;z-index:0;
   opacity:.4;
 }
 
-/* ── TOPBAR ── */
+/* TOPBAR */
 .topbar{
   display:flex;align-items:center;justify-content:space-between;
   padding:14px 40px;
@@ -110,7 +110,7 @@ body:has(.card:hover) #cursor-ring{opacity:0}
 }
 .today-badge:hover{background:rgba(232,184,75,0.25);box-shadow:0 0 20px rgba(232,184,75,0.2)}
 
-/* ── HERO ── */
+/* HERO */
 .hero{
   position:relative;text-align:center;
   padding:90px 24px 70px;
@@ -165,7 +165,7 @@ h1 .line2::after{
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── SEARCH + FILTER ── */
+/* SEARCH + FILTER */
 .controls{
   display:flex;flex-wrap:wrap;gap:12px;
   justify-content:center;align-items:center;
@@ -217,7 +217,7 @@ h1 .line2::after{
 .filter-btn[data-cat="kuvvet"].active{border-color:#9b59b6;color:#9b59b6;background:rgba(155,89,182,0.1)}
 .filter-btn[data-cat="denge"].active{border-color:#4caf7d;color:#4caf7d;background:rgba(76,175,125,0.1)}
 
-/* ── STATS ── */
+/* STATS */
 .stats{
   display:flex;justify-content:center;flex-wrap:wrap;
   border-top:1px solid var(--border);
@@ -248,7 +248,7 @@ h1 .line2::after{
 }
 .stat-lbl{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
 
-/* ── TODAY WIDGET ── */
+/* TODAY WIDGET */
 .today-widget{
   max-width:700px;margin:40px auto;
   padding:0 28px;
@@ -274,7 +274,6 @@ h1 .line2::after{
   pointer-events:none;
 }
 .today-icon{font-size:3rem;flex-shrink:0}
-.today-text{}
 .today-label{font-size:.65rem;color:var(--teal);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
 .today-name{font-family:'Bebas Neue',cursive;font-size:2rem;color:var(--gold);line-height:1}
 .today-desc{font-size:.82rem;color:var(--muted);margin-top:6px;line-height:1.5}
@@ -288,7 +287,7 @@ h1 .line2::after{
 }
 .today-inner:hover .today-cta{transform:scale(1.05);box-shadow:0 8px 20px rgba(232,184,75,0.4)}
 
-/* ── SECTION TITLE ── */
+/* SECTION TITLE */
 .section-head{
   text-align:center;padding:20px 24px 8px;
   position:relative;z-index:1;
@@ -306,7 +305,7 @@ h1 .line2::after{
 }
 .result-count span{color:var(--gold);font-weight:700}
 
-/* ── GRID ── */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
@@ -317,7 +316,7 @@ h1 .line2::after{
   position:relative;z-index:1;
 }
 
-/* ── CARD ── */
+/* CARD */
 .card{
   background:var(--card);
   border:1.5px solid var(--border2);
@@ -334,13 +333,6 @@ h1 .line2::after{
   from{opacity:0;transform:translateY(30px) scale(.96)}
   to{opacity:1;transform:translateY(0) scale(1)}
 }
-.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.08s}
-.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.14s}
-.card:nth-child(5){animation-delay:.17s}.card:nth-child(6){animation-delay:.20s}
-.card:nth-child(7){animation-delay:.23s}.card:nth-child(8){animation-delay:.26s}
-.card:nth-child(9){animation-delay:.29s}.card:nth-child(10){animation-delay:.32s}
-.card:nth-child(11){animation-delay:.35s}.card:nth-child(12){animation-delay:.38s}
-
 .card:hover{
   transform:translateY(-10px) scale(1.02);
   border-color:var(--gold);
@@ -349,7 +341,6 @@ h1 .line2::after{
 .card:active{transform:scale(.97)}
 .card.hidden{display:none}
 
-/* card color stripe by category */
 .card-stripe{height:4px;width:100%;border-radius:var(--r) var(--r) 0 0}
 .card[data-cat="esneklik"] .card-stripe{background:linear-gradient(90deg,var(--rose),#ff9a9a)}
 .card[data-cat="kardio"] .card-stripe{background:linear-gradient(90deg,var(--teal),#7be8e0)}
@@ -359,7 +350,6 @@ h1 .line2::after{
 .card[data-cat="ritim"] .card-stripe{background:linear-gradient(90deg,#f39c12,#f7dc6f)}
 
 .card-body{padding:22px 18px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
-
 .icon-ring{
   width:72px;height:72px;border-radius:50%;
   background:rgba(232,184,75,0.07);
@@ -381,7 +371,6 @@ h1 .line2::after{
   font-size:.58rem;font-weight:800;
   display:flex;align-items:center;justify-content:center;
 }
-
 .card-title{font-weight:700;font-size:.95rem;line-height:1.3}
 .card-cat{
   font-size:.62rem;font-weight:700;
@@ -408,14 +397,12 @@ h1 .line2::after{
 .card[data-cat="esneklik"] .diff-dot.active{background:var(--rose)}
 .card[data-cat="denge"] .diff-dot.active{background:var(--green)}
 .card[data-cat="kuvvet"] .diff-dot.active{background:var(--purple)}
-.card[data-cat="beceri"] .diff-dot.active{background:var(--gold)}
 .card[data-cat="ritim"] .diff-dot.active{background:#f7dc6f}
 .cal-badge{
   font-size:.64rem;color:var(--muted);
   margin-left:auto;
 }
 .cal-badge span{color:var(--text);font-weight:600}
-
 .play-tag{
   font-size:.68rem;font-weight:700;
   color:var(--teal);letter-spacing:.8px;text-transform:uppercase;
@@ -430,7 +417,7 @@ h1 .line2::after{
 .play-tag::before{content:'▶';font-size:.6rem}
 .card:hover .play-tag{opacity:1;transform:translateY(0)}
 
-/* ── MODAL ── */
+/* MODAL */
 .overlay{
   position:fixed;inset:0;
   background:rgba(4,8,18,0.92);
@@ -442,7 +429,6 @@ h1 .line2::after{
   padding:16px;
 }
 .overlay.open{opacity:1;pointer-events:all}
-
 .modal{
   background:var(--deep);
   border:1.5px solid rgba(232,184,75,0.25);
@@ -453,20 +439,14 @@ h1 .line2::after{
   transform:scale(.88) translateY(40px);
   transition:transform .35s cubic-bezier(.34,1.46,.64,1);
   box-shadow:0 50px 120px rgba(0,0,0,0.8);
-  scrollbar-width:thin;
-  scrollbar-color:var(--border) transparent;
 }
 .overlay.open .modal{transform:scale(1) translateY(0)}
-
-/* modal top stripe */
 .modal-stripe{
   height:5px;border-radius:24px 24px 0 0;
   background:linear-gradient(90deg,var(--gold),var(--teal));
   transition:background .3s;
 }
-
 .modal-content{padding:28px 32px 32px}
-
 .modal-top{
   display:flex;align-items:flex-start;
   justify-content:space-between;margin-bottom:22px;
@@ -491,8 +471,6 @@ h1 .line2::after{
   transition:background .18s,border-color .18s,color .18s;
 }
 .close-x:hover{background:rgba(232,184,75,0.18);border-color:var(--gold);color:var(--gold)}
-
-/* quick stats row */
 .modal-quick-stats{
   display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;
 }
@@ -506,7 +484,6 @@ h1 .line2::after{
 .qs-icon{font-size:1rem}
 .qs-label{color:var(--muted);font-size:.65rem;display:block;margin-bottom:1px}
 .qs-val{font-weight:600;color:var(--text);font-size:.82rem}
-
 .video-wrap{
   border-radius:14px;overflow:hidden;
   background:#000;
@@ -514,7 +491,6 @@ h1 .line2::after{
   margin-bottom:24px;
 }
 .video-wrap video{width:100%;display:block;max-height:420px}
-
 .no-video{
   background:rgba(255,255,255,0.02);
   border-radius:14px;padding:60px 20px;
@@ -524,14 +500,11 @@ h1 .line2::after{
 .no-video .nv-icon{font-size:3.2rem;margin-bottom:10px}
 .no-video strong{display:block;font-size:1rem;color:var(--text);margin-bottom:6px}
 .no-video small{color:var(--muted);font-size:.78rem;background:rgba(255,255,255,0.05);padding:4px 12px;border-radius:6px;display:inline-block;margin-top:8px;font-family:monospace}
-
-/* info sections */
 .info-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;margin-bottom:14px;
 }
-@media(max-width:560px){.info-grid{grid-template-columns:1fr}}
 .info-box{
   background:rgba(255,255,255,0.025);
   border:1px solid var(--border2);
@@ -558,7 +531,6 @@ h1 .line2::after{
   padding-left:16px;position:relative;line-height:1.5;
 }
 .tips-list li::before{content:'→';position:absolute;left:0;color:var(--teal);font-size:.75rem}
-
 .benefits-row{
   background:rgba(46,196,182,0.05);
   border:1px solid rgba(46,196,182,0.15);
@@ -578,21 +550,6 @@ h1 .line2::after{
   padding:5px 12px;border-radius:99px;
   display:flex;align-items:center;gap:5px;
 }
-
-/* progress bar in modal */
-.intensity-bar-wrap{
-  margin-top:8px;
-  background:rgba(255,255,255,0.05);
-  border-radius:99px;height:6px;overflow:hidden;
-}
-.intensity-bar{
-  height:100%;border-radius:99px;
-  background:linear-gradient(90deg,var(--teal),var(--gold));
-  transition:width 1s cubic-bezier(.17,.67,.5,1.2);
-  width:0;
-}
-
-/* ── FOOTER ── */
 footer{
   text-align:center;
   padding:30px 24px;
@@ -601,8 +558,6 @@ footer{
   position:relative;z-index:1;
 }
 footer strong{color:var(--gold)}
-
-/* ── TOAST ── */
 .toast{
   position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);
   background:var(--card2);border:1.5px solid var(--border);
@@ -627,13 +582,15 @@ footer strong{color:var(--gold)}
 }
 </style>
 </head>
+
 <body>
+
+<audio id="bgMusic" src="m1.mp3" loop preload="auto"></audio>
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 <canvas id="particleCanvas"></canvas>
 
-<!-- TOPBAR -->
 <header class="topbar">
   <div class="topbar-left">
     <div class="emblem">🏫</div>
@@ -648,7 +605,6 @@ footer strong{color:var(--gold)}
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-bg-lines"></div>
   <div class="hero-glow"></div>
@@ -657,7 +613,6 @@ footer strong{color:var(--gold)}
   <p class="hero-sub">12 farklı spor hareketini keşfet, videosunu izle, kas gruplarını öğren ve teknik ipuçlarını incele.</p>
 </section>
 
-<!-- STATS -->
 <div class="stats" id="statsBar">
   <div class="stat">
     <div class="stat-num" data-count="12">0</div>
@@ -677,7 +632,6 @@ footer strong{color:var(--gold)}
   </div>
 </div>
 
-<!-- TODAY WIDGET -->
 <div class="today-widget">
   <div class="today-inner" id="todayWidget">
     <div class="today-icon" id="todayIcon">🏃</div>
@@ -690,7 +644,6 @@ footer strong{color:var(--gold)}
   </div>
 </div>
 
-<!-- CONTROLS -->
 <div class="controls">
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
@@ -707,16 +660,13 @@ footer strong{color:var(--gold)}
   </div>
 </div>
 
-<!-- SECTION HEAD -->
 <div class="section-head">
   <h2>Hareket <span>Seç</span></h2>
   <p id="resultCount" class="result-count"><span>12</span> hareket listeleniyor</p>
 </div>
 
-<!-- GRID -->
 <div class="grid" id="grid"></div>
 
-<!-- MODAL -->
 <div class="overlay" id="overlay">
   <div class="modal" id="modalBox">
     <div class="modal-stripe" id="mStripe"></div>
@@ -731,13 +681,13 @@ footer strong{color:var(--gold)}
         </div>
         <button class="close-x" id="closeBtn" aria-label="Kapat">✕</button>
       </div>
-      <!-- quick stats -->
+
       <div class="modal-quick-stats" id="mQuickStats"></div>
-      <!-- video -->
+
       <div id="videoWrap"></div>
-      <!-- benefits -->
+
       <div class="benefits-row" id="mBenefits"></div>
-      <!-- info grid -->
+
       <div class="info-grid">
         <div class="info-box">
           <h4><span>💪</span> Çalışan Kaslar</h4>
@@ -752,19 +702,14 @@ footer strong{color:var(--gold)}
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- FOOTER -->
 <footer>
   <strong>Hasan Harakani Anadolu Lisesi</strong> &nbsp;·&nbsp; Kars &nbsp;·&nbsp; TÜBİTAK 4006-A Bilim Fuarı<br>
   <span style="font-size:.72rem;">Spor Hareketleri Analiz Projesi &nbsp;·&nbsp; 2025</span>
 </footer>
 
 <script>
-// ─────────────────────────────────────────────
-// VERİ
-// ─────────────────────────────────────────────
 const moves = [
   {
     id:1,name:"Touch Your Toes",icon:"🤸",file:"touch_your_toes.mp4",
@@ -776,7 +721,7 @@ const moves = [
     intensity:30
   },
   {
-    id:2,name:"Boks Hareketleri",icon:"🥊",file:"box.mp4",
+    id:2,name:"Box",icon:"🥊",file:"box.mp4",
     cat:"kuvvet",difficulty:3,cal:"200–300",duration:"20 dk",
     desc:"Üst vücut gücü ve kardiovasküler dayanıklılık geliştiren müthiş kombinasyon.",
     muscles:["Deltoid","Triceps","Omuz","Göğüs","Sırt","Core"],
@@ -785,7 +730,7 @@ const moves = [
     intensity:80
   },
   {
-    id:3,name:"Koşmak",icon:"🏃",file:"kosmak.mp4",
+    id:3,name:"Run",icon:"🏃",file:"kosmak.mp4",
     cat:"kardio",difficulty:2,cal:"300–500",duration:"30 dk",
     desc:"En temel kardio egzersizi. Tüm vücudu çalıştırır, dayanıklılığı artırır.",
     muscles:["Quadriceps","Hamstring","Baldır","Gluteus","Core"],
@@ -794,7 +739,7 @@ const moves = [
     intensity:65
   },
   {
-    id:4,name:"Voleybol Servis",icon:"🏐",file:"voleybol_servis.mp4",
+    id:4,name:"Serve",icon:"🏐",file:"voleybol_servis.mp4",
     cat:"beceri",difficulty:2,cal:"120–180",duration:"15 dk",
     desc:"Omuz koordinasyonu ve güç aktarımı gerektiren teknik hareket.",
     muscles:["Deltoid","Rotator Cuff","Triceps","Core","Bacak Kasları"],
@@ -803,7 +748,7 @@ const moves = [
     intensity:50
   },
   {
-    id:5,name:"Futbol Şut",icon:"⚽",file:"futbol_sut.mp4",
+    id:5,name:"Shoot",icon:"⚽",file:"futbol_sut.mp4",
     cat:"kuvvet",difficulty:3,cal:"150–220",duration:"15 dk",
     desc:"Bacak kuvveti, denge ve koordinasyon bir arada. Güç transferi mükemmel.",
     muscles:["Quadriceps","Hamstring","Gluteus","Baldır","Core","Kalça Fleksörü"],
@@ -812,7 +757,7 @@ const moves = [
     intensity:70
   },
   {
-    id:6,name:"Futbol Dribling",icon:"🦶",file:"futbol_dribling.mp4",
+    id:6,name:"Dribble",icon:"🦶",file:"futbol_dribling.mp4",
     cat:"beceri",difficulty:3,cal:"200–350",duration:"20 dk",
     desc:"Hız, çeviklik ve top kontrolü gerektiren dinamik beceri hareketi.",
     muscles:["Baldır","Quadriceps","Core","Ayak Bileği","Hamstring"],
@@ -821,7 +766,7 @@ const moves = [
     intensity:75
   },
   {
-    id:7,name:"Top Fırlatma",icon:"🤾",file:"top_firlatma.mp4",
+    id:7,name:"Throw",icon:"🤾",file:"top_firlatma.mp4",
     cat:"kuvvet",difficulty:2,cal:"100–160",duration:"12 dk",
     desc:"El-göz koordinasyonu ve üst vücut gücünü birleştiren fonksiyonel hareket.",
     muscles:["Deltoid","Trapez","Biceps","Forearm","Core","Rotator Cuff"],
@@ -830,7 +775,7 @@ const moves = [
     intensity:55
   },
   {
-    id:8,name:"Basketbol Bouncing",icon:"🏀",file:"basketbol_bouncing.mp4",
+    id:8,name:"Basketball Bouncing",icon:"🏀",file:"basketbol_bouncing.mp4",
     cat:"beceri",difficulty:2,cal:"120–200",duration:"15 dk",
     desc:"Ritim, koordinasyon ve el kontrolü gerektiren temel basketbol becerisi.",
     muscles:["Forearm","Biceps","Deltoid","Core","Diz","Baldır"],
@@ -839,7 +784,7 @@ const moves = [
     intensity:45
   },
   {
-    id:9,name:"Zıplama",icon:"🦘",file:"ziplama.mp4",
+    id:9,name:"Jump",icon:"🦘",file:"ziplama.mp4",
     cat:"kardio",difficulty:2,cal:"300–450",duration:"15 dk",
     desc:"Patlayıcı güç ve kardio kapasitesini aynı anda geliştiren etkili hareket.",
     muscles:["Quadriceps","Gluteus","Baldır","Hamstring","Core"],
@@ -848,7 +793,7 @@ const moves = [
     intensity:70
   },
   {
-    id:10,name:"Denge Hareketi",icon:"🧘",file:"balance.mp4",
+    id:10,name:"Balance",icon:"🧘",file:"balance.mp4",
     cat:"denge",difficulty:2,cal:"60–100",duration:"10 dk",
     desc:"Propriosepsiyon, core stabilitesi ve zihinsel odaklanmayı birlikte geliştirir.",
     muscles:["Core","Ayak Bileği","Tibia","Gluteus","Sırt"],
@@ -866,7 +811,7 @@ const moves = [
     intensity:35
   },
   {
-    id:12,name:"Dans (Halay)",icon:"💃",file:"dans_halay.mp4",
+    id:12,name:"Dance",icon:"💃",file:"dans_halay.mp4",
     cat:"ritim",difficulty:2,cal:"200–300",duration:"20 dk",
     desc:"Geleneksel Türk dansı. Ritim, koordinasyon ve sosyal enerji bir arada.",
     muscles:["Bacak Kasları","Core","Omuz","Kalça","Baldır"],
@@ -877,53 +822,74 @@ const moves = [
 ];
 
 const catColors = {
-  esneklik:"#ff6b6b",kardio:"#2ec4b6",kuvvet:"#9b59b6",
-  denge:"#4caf7d",beceri:"#e8b84b",ritim:"#f39c12"
+  esneklik:"#ff6b6b",
+  kardio:"#2ec4b6",
+  kuvvet:"#9b59b6",
+  denge:"#4caf7d",
+  beceri:"#e8b84b",
+  ritim:"#f39c12"
 };
 
-// ─────────────────────────────────────────────
-// PARTICLES
-// ─────────────────────────────────────────────
+const bgMusic = document.getElementById('bgMusic');
+bgMusic.volume = 0.45;
+
 (function(){
   const c=document.getElementById('particleCanvas');
   const ctx=c.getContext('2d');
   let W,H,pts=[];
   function resize(){W=c.width=innerWidth;H=c.height=innerHeight}
-  resize();window.addEventListener('resize',resize);
+  resize();
+  window.addEventListener('resize',resize);
+
   for(let i=0;i<60;i++){
     pts.push({
-      x:Math.random()*innerWidth,y:Math.random()*innerHeight,
+      x:Math.random()*innerWidth,
+      y:Math.random()*innerHeight,
       r:Math.random()*1.5+.3,
-      vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
+      vx:(Math.random()-.5)*.3,
+      vy:(Math.random()-.5)*.3,
       a:Math.random()
     });
   }
+
   function draw(){
     ctx.clearRect(0,0,W,H);
     pts.forEach(p=>{
-      p.x+=p.vx;p.y+=p.vy;
-      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
-      if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(232,184,75,${p.a*0.4})`;ctx.fill();
+      p.x+=p.vx;
+      p.y+=p.vy;
+      if(p.x<0)p.x=W;
+      if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H;
+      if(p.y>H)p.y=0;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(232,184,75,${p.a*0.4})`;
+      ctx.fill();
     });
     requestAnimationFrame(draw);
   }
   draw();
 })();
 
-// ─────────────────────────────────────────────
-// CURSOR
-// ─────────────────────────────────────────────
 const cur=document.getElementById('cursor');
 const ring=document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-(function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
 
-// ─────────────────────────────────────────────
-// COUNTER ANIMATION
-// ─────────────────────────────────────────────
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;
+  my=e.clientY;
+  cur.style.left=mx+'px';
+  cur.style.top=my+'px';
+});
+
+(function animRing(){
+  rx+=(mx-rx)*.12;
+  ry+=(my-ry)*.12;
+  ring.style.left=rx+'px';
+  ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+})();
+
 function animateCounter(el,target,dur=1800){
   let start=null;
   function step(ts){
@@ -935,6 +901,7 @@ function animateCounter(el,target,dur=1800){
   }
   requestAnimationFrame(step);
 }
+
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -946,29 +913,28 @@ const obs=new IntersectionObserver(entries=>{
     }
   });
 });
+
 obs.observe(document.getElementById('statsBar'));
 
-// ─────────────────────────────────────────────
-// TODAY WIDGET
-// ─────────────────────────────────────────────
 const todayIdx = new Date().getDay() % moves.length;
 const todayMove = moves[todayIdx];
+
 document.getElementById('todayIcon').textContent=todayMove.icon;
 document.getElementById('todayName').textContent=todayMove.name;
 document.getElementById('todayDesc').textContent=todayMove.desc;
 document.getElementById('todayWidget').addEventListener('click',()=>openModal(todayMove));
 document.getElementById('todayBtn').addEventListener('click',()=>openModal(todayMove));
 
-// ─────────────────────────────────────────────
-// BUILD CARDS
-// ─────────────────────────────────────────────
 const grid=document.getElementById('grid');
+
 moves.forEach(m=>{
   const card=document.createElement('div');
   card.className='card';
   card.dataset.cat=m.cat;
   card.dataset.name=m.name.toLowerCase();
+
   const dots=[1,2,3].map(d=>`<div class="diff-dot ${d<=m.difficulty?'active':''}"></div>`).join('');
+
   card.innerHTML=`
     <div class="card-stripe"></div>
     <div class="card-body">
@@ -983,26 +949,35 @@ moves.forEach(m=>{
         <div class="cal-badge">~<span>${m.cal}</span> kcal</div>
       </div>
     </div>
-    <div class="play-tag">Videoyu Oynat</div>`;
+    <div class="play-tag">Videoyu Oynat</div>
+  `;
+
   card.addEventListener('click',()=>openModal(m));
   grid.appendChild(card);
 });
 
-// ─────────────────────────────────────────────
-// FILTER + SEARCH
-// ─────────────────────────────────────────────
-let activeFilter='tümü',searchVal='';
+let activeFilter='tümü';
+let searchVal='';
+
 function applyFilters(){
   const cards=document.querySelectorAll('.card');
   let visible=0;
+
   cards.forEach(c=>{
     const catMatch=activeFilter==='tümü'||c.dataset.cat===activeFilter;
     const searchMatch=!searchVal||c.dataset.name.includes(searchVal);
-    if(catMatch&&searchMatch){c.classList.remove('hidden');visible++;}
-    else c.classList.add('hidden');
+
+    if(catMatch&&searchMatch){
+      c.classList.remove('hidden');
+      visible++;
+    }else{
+      c.classList.add('hidden');
+    }
   });
+
   document.querySelector('#resultCount span').textContent=visible;
 }
+
 document.querySelectorAll('.filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
@@ -1011,14 +986,12 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
     applyFilters();
   });
 });
+
 document.getElementById('searchInput').addEventListener('input',e=>{
   searchVal=e.target.value.toLowerCase().trim();
   applyFilters();
 });
 
-// ─────────────────────────────────────────────
-// MODAL
-// ─────────────────────────────────────────────
 const overlay=document.getElementById('overlay');
 const closeBtn=document.getElementById('closeBtn');
 
@@ -1027,45 +1000,69 @@ function openModal(m){
   document.getElementById('mIcon').textContent=m.icon;
   document.getElementById('mTitle').textContent=m.name;
 
-  // stripe color
   const stripe=document.getElementById('mStripe');
   const col=catColors[m.cat]||'var(--gold)';
   stripe.style.background=`linear-gradient(90deg,${col},var(--gold))`;
 
-  // quick stats
   const qs=document.getElementById('mQuickStats');
   qs.innerHTML=`
     <div class="qs-badge"><span class="qs-icon">⏱️</span><div><span class="qs-label">Süre</span><span class="qs-val">${m.duration}</span></div></div>
     <div class="qs-badge"><span class="qs-icon">🔥</span><div><span class="qs-label">Kalori</span><span class="qs-val">${m.cal} kcal</span></div></div>
     <div class="qs-badge"><span class="qs-icon">📊</span><div><span class="qs-label">Zorluk</span><span class="qs-val">${['','Kolay','Orta','Zor'][m.difficulty]}</span></div></div>
-    <div class="qs-badge"><span class="qs-icon">🏷️</span><div><span class="qs-label">Kategori</span><span class="qs-val">${m.cat.charAt(0).toUpperCase()+m.cat.slice(1)}</span></div></div>`;
+    <div class="qs-badge"><span class="qs-icon">🏷️</span><div><span class="qs-label">Kategori</span><span class="qs-val">${m.cat.charAt(0).toUpperCase()+m.cat.slice(1)}</span></div></div>
+  `;
 
-  // video
   const vw=document.getElementById('videoWrap');
+
   if(m.file){
-    vw.innerHTML=`<div class="video-wrap"><video controls autoplay playsinline><source src="videos/${m.file}" type="video/mp4">Tarayıcınız video desteklemiyor.</video></div>`;
-  } else {
-    vw.innerHTML=`<div class="no-video"><div class="nv-icon">🎬</div><strong>Video Henüz Eklenmedi</strong><br><small>videos/${m.file||m.name.toLowerCase().replace(/\s+/g,'_')}.mp4</small></div>`;
+    vw.innerHTML=`
+      <div class="video-wrap">
+        <video controls autoplay muted playsinline>
+          <source src="videos/${m.file}" type="video/mp4">
+          Tarayıcınız video desteklemiyor.
+        </video>
+      </div>
+    `;
+
+    const video = vw.querySelector('video');
+
+    if(video){
+      video.muted = true;
+      video.volume = 0;
+
+      video.addEventListener('volumechange',()=>{
+        video.muted = true;
+        video.volume = 0;
+      });
+    }
+
+  }else{
+    vw.innerHTML=`
+      <div class="no-video">
+        <div class="nv-icon">🎬</div>
+        <strong>Video Henüz Eklenmedi</strong><br>
+        <small>videos/${m.file||m.name.toLowerCase().replace(/\s+/g,'_')}.mp4</small>
+      </div>
+    `;
   }
 
-  // benefits
   const bRow=document.getElementById('mBenefits');
-  bRow.innerHTML=`<h4>✅ Faydaları</h4><div class="benefit-tags">${m.benefits.map(b=>`<div class="benefit-tag">${b}</div>`).join('')}</div>`;
+  bRow.innerHTML=`
+    <h4>✅ Faydaları</h4>
+    <div class="benefit-tags">
+      ${m.benefits.map(b=>`<div class="benefit-tag">${b}</div>`).join('')}
+    </div>
+  `;
 
-  // muscles
   document.getElementById('mMuscles').innerHTML=m.muscles.map(ms=>`<div class="muscle-tag">${ms}</div>`).join('');
-
-  // tips
   document.getElementById('mTips').innerHTML=m.tips.map(t=>`<li>${t}</li>`).join('');
 
   overlay.classList.add('open');
   document.body.style.overflow='hidden';
 
-  // animate intensity bar
-  setTimeout(()=>{
-    const bar=document.querySelector('.intensity-bar');
-    if(bar)bar.style.width=m.intensity+'%';
-  },100);
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
+  bgMusic.play().catch(()=>{});
 
   showToast(`${m.icon} ${m.name} açıldı`);
 }
@@ -1073,35 +1070,56 @@ function openModal(m){
 function closeModal(){
   overlay.classList.remove('open');
   document.body.style.overflow='';
+
   const v=document.querySelector('#videoWrap video');
-  if(v)v.pause();
+
+  if(v){
+    v.pause();
+    v.muted = true;
+    v.volume = 0;
+  }
+
+  bgMusic.pause();
+  bgMusic.currentTime = 0;
 }
 
 closeBtn.addEventListener('click',closeModal);
-overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-// ─────────────────────────────────────────────
-// TOAST
-// ─────────────────────────────────────────────
+overlay.addEventListener('click',e=>{
+  if(e.target===overlay)closeModal();
+});
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closeModal();
+});
+
 let toastTimer;
+
 function showToast(msg){
   const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
+  t.textContent=msg;
+  t.classList.add('show');
+
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+
+  toastTimer=setTimeout(()=>{
+    t.classList.remove('show');
+  },2200);
 }
 
-// ─────────────────────────────────────────────
-// SCROLL FADE-IN for cards
-// ─────────────────────────────────────────────
 const cardObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0) scale(1)';cardObs.unobserve(e.target);}
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0) scale(1)';
+      cardObs.unobserve(e.target);
+    }
   });
 },{threshold:.08});
+
 document.querySelectorAll('.card').forEach(c=>{
-  c.style.opacity='0';c.style.transform='translateY(30px) scale(.97)';
+  c.style.opacity='0';
+  c.style.transform='translateY(30px) scale(.97)';
   c.style.transition='opacity .5s ease,transform .5s ease';
   cardObs.observe(c);
 });
