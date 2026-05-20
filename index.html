@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Spor Hareketleri – Hasan Harakani Anadolu Lisesi</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#080e1a;
+  --deep:#0d1625;
+  --card:#111e30;
+  --card2:#152238;
+  --gold:#e8b84b;
+  --gold2:#f5d48a;
+  --gold3:rgba(232,184,75,0.12);
+  --teal:#2ec4b6;
+  --rose:#ff6b6b;
+  --green:#4caf7d;
+  --purple:#9b59b6;
+  --text:#eef2f7;
+  --muted:#6a849a;
+  --muted2:#4a6278;
+  --border:rgba(232,184,75,0.15);
+  --border2:rgba(255,255,255,0.06);
+  --r:18px;
+  --shadow:0 30px 80px rgba(0,0,0,0.6);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--navy);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* ── CUSTOM CURSOR ── */
+#cursor{
+  width:12px;height:12px;
+  background:var(--gold);
+  border-radius:50%;
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:transform .1s,width .2s,height .2s,background .2s;
+  mix-blend-mode:screen;
+}
+#cursor-ring{
+  width:38px;height:38px;
+  border:1.5px solid rgba(232,184,75,0.5);
+  border-radius:50%;
+  position:fixed;top:0;left:0;
+  pointer-events:none;z-index:99998;
+  transform:translate(-50%,-50%);
+  transition:transform .18s ease,width .2s,height .2s,opacity .2s;
+}
+body:has(.card:hover) #cursor{width:60px;height:60px;background:rgba(232,184,75,0.15)}
+body:has(.card:hover) #cursor-ring{opacity:0}
+
+/* ── PARTICLES CANVAS ── */
+#particleCanvas{
+  position:fixed;inset:0;
+  pointer-events:none;z-index:0;
+  opacity:.4;
+}
+
+/* ── TOPBAR ── */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 40px;
+  border-bottom:1px solid var(--border);
+  background:rgba(8,14,26,0.96);
+  backdrop-filter:blur(20px);
+  position:sticky;top:0;z-index:500;
+}
+.topbar-left{display:flex;align-items:center;gap:14px}
+.emblem{
+  width:48px;height:48px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),#9a6018);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;
+  box-shadow:0 0 0 3px rgba(232,184,75,0.2),0 0 20px rgba(232,184,75,0.15);
+  animation:pulse-glow 3s ease-in-out infinite;
+}
+@keyframes pulse-glow{
+  0%,100%{box-shadow:0 0 0 3px rgba(232,184,75,0.2),0 0 20px rgba(232,184,75,0.1)}
+  50%{box-shadow:0 0 0 5px rgba(232,184,75,0.3),0 0 35px rgba(232,184,75,0.25)}
+}
+.school-name strong{display:block;font-size:.82rem;font-weight:700;color:var(--gold);letter-spacing:.5px}
+.school-name span{font-size:.68rem;color:var(--muted);letter-spacing:.3px}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.tubitak-badge{
+  background:linear-gradient(135deg,#112356,#0a1535);
+  border:1px solid rgba(46,196,182,0.4);
+  color:var(--teal);font-size:.64rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:6px 14px;border-radius:99px;
+  box-shadow:0 0 15px rgba(46,196,182,0.1);
+}
+.today-badge{
+  background:linear-gradient(135deg,rgba(232,184,75,0.15),rgba(232,184,75,0.05));
+  border:1px solid var(--border);
+  color:var(--gold2);font-size:.64rem;font-weight:600;
+  padding:6px 14px;border-radius:99px;
+  cursor:pointer;
+  transition:background .2s,box-shadow .2s;
+}
+.today-badge:hover{background:rgba(232,184,75,0.25);box-shadow:0 0 20px rgba(232,184,75,0.2)}
+
+/* ── HERO ── */
+.hero{
+  position:relative;text-align:center;
+  padding:90px 24px 70px;
+  overflow:hidden;z-index:1;
+}
+.hero-bg-lines{
+  position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(90deg,rgba(232,184,75,0.03) 0,rgba(232,184,75,0.03) 1px,transparent 1px,transparent 80px),
+    repeating-linear-gradient(0deg,rgba(232,184,75,0.03) 0,rgba(232,184,75,0.03) 1px,transparent 1px,transparent 80px);
+  pointer-events:none;
+}
+.hero-glow{
+  position:absolute;top:-120px;left:50%;
+  transform:translateX(-50%);
+  width:800px;height:600px;
+  background:radial-gradient(ellipse,rgba(232,184,75,0.1) 0%,transparent 65%);
+  pointer-events:none;animation:glow-breathe 5s ease-in-out infinite;
+}
+@keyframes glow-breathe{0%,100%{opacity:.7}50%{opacity:1}}
+.hero-label{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(232,184,75,0.08);
+  border:1px solid rgba(232,184,75,0.25);
+  color:var(--gold2);font-size:.72rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  padding:7px 20px;border-radius:99px;margin-bottom:28px;
+  animation:fadeDown .7s ease both;
+}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+h1{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(3.5rem,9vw,8rem);
+  line-height:.95;letter-spacing:2px;
+  margin-bottom:20px;
+  animation:fadeUp .7s .1s ease both;
+}
+h1 .line2{color:var(--gold);display:block;position:relative}
+h1 .line2::after{
+  content:'';
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:0;height:3px;
+  background:linear-gradient(90deg,var(--gold),var(--teal));
+  border-radius:99px;
+  animation:line-grow 1s .8s ease forwards;
+}
+@keyframes line-grow{to{width:80%}}
+.hero-sub{
+  color:var(--muted);font-size:1rem;max-width:500px;
+  margin:0 auto 32px;line-height:1.7;
+  animation:fadeUp .7s .2s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SEARCH + FILTER ── */
+.controls{
+  display:flex;flex-wrap:wrap;gap:12px;
+  justify-content:center;align-items:center;
+  padding:0 28px 0;
+  max-width:900px;margin:0 auto 40px;
+  animation:fadeUp .7s .3s ease both;
+  position:relative;z-index:1;
+}
+.search-wrap{
+  flex:1;min-width:220px;max-width:360px;
+  position:relative;
+}
+.search-wrap input{
+  width:100%;
+  background:var(--card);
+  border:1.5px solid var(--border2);
+  border-radius:12px;
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:.88rem;
+  padding:12px 16px 12px 44px;
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.search-wrap input::placeholder{color:var(--muted2)}
+.search-wrap input:focus{border-color:var(--gold);box-shadow:0 0 20px rgba(232,184,75,0.15)}
+.search-icon{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  color:var(--muted);font-size:.9rem;pointer-events:none;
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.filter-btn{
+  background:var(--card);
+  border:1.5px solid var(--border2);
+  color:var(--muted);
+  font-family:'Inter',sans-serif;
+  font-size:.72rem;font-weight:600;
+  letter-spacing:.8px;text-transform:uppercase;
+  padding:8px 16px;border-radius:99px;
+  cursor:pointer;transition:all .2s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:rgba(232,184,75,0.15);
+  border-color:var(--gold);
+  color:var(--gold);
+}
+.filter-btn[data-cat="esneklik"].active{border-color:#ff6b6b;color:#ff6b6b;background:rgba(255,107,107,0.1)}
+.filter-btn[data-cat="kardio"].active{border-color:#2ec4b6;color:#2ec4b6;background:rgba(46,196,182,0.1)}
+.filter-btn[data-cat="kuvvet"].active{border-color:#9b59b6;color:#9b59b6;background:rgba(155,89,182,0.1)}
+.filter-btn[data-cat="denge"].active{border-color:#4caf7d;color:#4caf7d;background:rgba(76,175,125,0.1)}
+
+/* ── STATS ── */
+.stats{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--deep);
+  position:relative;z-index:1;
+}
+.stat{
+  flex:1;min-width:110px;padding:22px 20px;
+  text-align:center;
+  border-right:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.stat:last-child{border-right:none}
+.stat::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  opacity:0;transition:opacity .3s;
+}
+.stat:hover::before{opacity:1}
+.stat:nth-child(1)::before{background:var(--gold)}
+.stat:nth-child(2)::before{background:var(--teal)}
+.stat:nth-child(3)::before{background:var(--rose)}
+.stat:nth-child(4)::before{background:var(--green)}
+.stat-num{
+  font-family:'Bebas Neue',cursive;
+  font-size:2.4rem;color:var(--gold);
+  line-height:1;
+}
+.stat-lbl{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+
+/* ── TODAY WIDGET ── */
+.today-widget{
+  max-width:700px;margin:40px auto;
+  padding:0 28px;
+  position:relative;z-index:1;
+  animation:fadeUp .7s .4s ease both;
+}
+.today-inner{
+  background:linear-gradient(135deg,rgba(232,184,75,0.1),rgba(46,196,182,0.05));
+  border:1.5px solid rgba(232,184,75,0.3);
+  border-radius:20px;
+  padding:24px 28px;
+  display:flex;align-items:center;gap:20px;
+  position:relative;overflow:hidden;
+  cursor:pointer;
+  transition:transform .2s,box-shadow .2s;
+}
+.today-inner:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(232,184,75,0.15)}
+.today-inner::before{
+  content:'';position:absolute;
+  top:-40px;right:-40px;
+  width:160px;height:160px;
+  background:radial-gradient(circle,rgba(232,184,75,0.15),transparent 65%);
+  pointer-events:none;
+}
+.today-icon{font-size:3rem;flex-shrink:0}
+.today-text{}
+.today-label{font-size:.65rem;color:var(--teal);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+.today-name{font-family:'Bebas Neue',cursive;font-size:2rem;color:var(--gold);line-height:1}
+.today-desc{font-size:.82rem;color:var(--muted);margin-top:6px;line-height:1.5}
+.today-cta{
+  margin-left:auto;flex-shrink:0;
+  background:var(--gold);color:var(--navy);
+  font-size:.75rem;font-weight:700;
+  padding:10px 20px;border-radius:99px;
+  letter-spacing:.5px;
+  transition:transform .2s,box-shadow .2s;
+}
+.today-inner:hover .today-cta{transform:scale(1.05);box-shadow:0 8px 20px rgba(232,184,75,0.4)}
+
+/* ── SECTION TITLE ── */
+.section-head{
+  text-align:center;padding:20px 24px 8px;
+  position:relative;z-index:1;
+}
+.section-head h2{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(2rem,4vw,3rem);
+  letter-spacing:2px;
+}
+.section-head h2 span{color:var(--gold)}
+.section-head p{color:var(--muted);font-size:.88rem;margin-top:6px}
+.result-count{
+  font-size:.78rem;color:var(--muted);
+  margin-top:8px;font-weight:500;
+}
+.result-count span{color:var(--gold);font-weight:700}
+
+/* ── GRID ── */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:16px;
+  max-width:1140px;
+  margin:32px auto 0;
+  padding:0 28px 100px;
+  position:relative;z-index:1;
+}
+
+/* ── CARD ── */
+.card{
+  background:var(--card);
+  border:1.5px solid var(--border2);
+  border-radius:var(--r);
+  display:flex;flex-direction:column;
+  padding:0;
+  cursor:pointer;
+  transition:transform .25s ease,border-color .25s,box-shadow .25s;
+  position:relative;overflow:hidden;
+  user-select:none;
+  animation:cardIn .5s both;
+}
+@keyframes cardIn{
+  from{opacity:0;transform:translateY(30px) scale(.96)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.card:nth-child(1){animation-delay:.05s}.card:nth-child(2){animation-delay:.08s}
+.card:nth-child(3){animation-delay:.11s}.card:nth-child(4){animation-delay:.14s}
+.card:nth-child(5){animation-delay:.17s}.card:nth-child(6){animation-delay:.20s}
+.card:nth-child(7){animation-delay:.23s}.card:nth-child(8){animation-delay:.26s}
+.card:nth-child(9){animation-delay:.29s}.card:nth-child(10){animation-delay:.32s}
+.card:nth-child(11){animation-delay:.35s}.card:nth-child(12){animation-delay:.38s}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.02);
+  border-color:var(--gold);
+  box-shadow:0 25px 60px rgba(232,184,75,0.18),0 0 0 1px rgba(232,184,75,0.15);
+}
+.card:active{transform:scale(.97)}
+.card.hidden{display:none}
+
+/* card color stripe by category */
+.card-stripe{height:4px;width:100%;border-radius:var(--r) var(--r) 0 0}
+.card[data-cat="esneklik"] .card-stripe{background:linear-gradient(90deg,var(--rose),#ff9a9a)}
+.card[data-cat="kardio"] .card-stripe{background:linear-gradient(90deg,var(--teal),#7be8e0)}
+.card[data-cat="kuvvet"] .card-stripe{background:linear-gradient(90deg,var(--purple),#c39bd3)}
+.card[data-cat="denge"] .card-stripe{background:linear-gradient(90deg,var(--green),#82e0aa)}
+.card[data-cat="beceri"] .card-stripe{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.card[data-cat="ritim"] .card-stripe{background:linear-gradient(90deg,#f39c12,#f7dc6f)}
+
+.card-body{padding:22px 18px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+
+.icon-ring{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(232,184,75,0.07);
+  border:1.5px solid rgba(232,184,75,0.18);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.1rem;
+  transition:transform .3s,background .3s,box-shadow .3s;
+  position:relative;
+}
+.card:hover .icon-ring{
+  background:rgba(232,184,75,0.18);
+  box-shadow:0 0 30px rgba(232,184,75,0.3);
+  transform:scale(1.15) rotate(-5deg);
+}
+.card-num{
+  position:absolute;top:-4px;right:-4px;
+  width:20px;height:20px;border-radius:50%;
+  background:var(--gold);color:var(--navy);
+  font-size:.58rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.card-title{font-weight:700;font-size:.95rem;line-height:1.3}
+.card-cat{
+  font-size:.62rem;font-weight:700;
+  letter-spacing:1.2px;text-transform:uppercase;
+  padding:3px 10px;border-radius:99px;
+  display:inline-flex;align-items:center;gap:5px;
+  width:fit-content;
+}
+.card[data-cat="esneklik"] .card-cat{background:rgba(255,107,107,0.12);color:#ff9a9a}
+.card[data-cat="kardio"] .card-cat{background:rgba(46,196,182,0.12);color:var(--teal)}
+.card[data-cat="kuvvet"] .card-cat{background:rgba(155,89,182,0.12);color:#c39bd3}
+.card[data-cat="denge"] .card-cat{background:rgba(76,175,125,0.12);color:#82e0aa}
+.card[data-cat="beceri"] .card-cat{background:rgba(232,184,75,0.12);color:var(--gold2)}
+.card[data-cat="ritim"] .card-cat{background:rgba(243,156,18,0.12);color:#f7dc6f}
+
+.card-meta{display:flex;gap:12px;align-items:center}
+.difficulty{display:flex;gap:3px}
+.diff-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--border2);transition:background .2s;
+}
+.diff-dot.active{background:var(--gold)}
+.card[data-cat="kardio"] .diff-dot.active{background:var(--teal)}
+.card[data-cat="esneklik"] .diff-dot.active{background:var(--rose)}
+.card[data-cat="denge"] .diff-dot.active{background:var(--green)}
+.card[data-cat="kuvvet"] .diff-dot.active{background:var(--purple)}
+.card[data-cat="beceri"] .diff-dot.active{background:var(--gold)}
+.card[data-cat="ritim"] .diff-dot.active{background:#f7dc6f}
+.cal-badge{
+  font-size:.64rem;color:var(--muted);
+  margin-left:auto;
+}
+.cal-badge span{color:var(--text);font-weight:600}
+
+.play-tag{
+  font-size:.68rem;font-weight:700;
+  color:var(--teal);letter-spacing:.8px;text-transform:uppercase;
+  display:flex;align-items:center;gap:5px;
+  padding:8px 14px;
+  background:rgba(46,196,182,0.07);
+  border-top:1px solid rgba(46,196,182,0.12);
+  border-radius:0 0 calc(var(--r) - 2px) calc(var(--r) - 2px);
+  opacity:0;transform:translateY(4px);
+  transition:opacity .22s,transform .22s;
+}
+.play-tag::before{content:'▶';font-size:.6rem}
+.card:hover .play-tag{opacity:1;transform:translateY(0)}
+
+/* ── MODAL ── */
+.overlay{
+  position:fixed;inset:0;
+  background:rgba(4,8,18,0.92);
+  backdrop-filter:blur(16px);
+  display:flex;align-items:center;justify-content:center;
+  z-index:900;
+  opacity:0;pointer-events:none;
+  transition:opacity .28s;
+  padding:16px;
+}
+.overlay.open{opacity:1;pointer-events:all}
+
+.modal{
+  background:var(--deep);
+  border:1.5px solid rgba(232,184,75,0.25);
+  border-radius:24px;
+  width:100%;max-width:820px;
+  max-height:90vh;overflow-y:auto;
+  position:relative;
+  transform:scale(.88) translateY(40px);
+  transition:transform .35s cubic-bezier(.34,1.46,.64,1);
+  box-shadow:0 50px 120px rgba(0,0,0,0.8);
+  scrollbar-width:thin;
+  scrollbar-color:var(--border) transparent;
+}
+.overlay.open .modal{transform:scale(1) translateY(0)}
+
+/* modal top stripe */
+.modal-stripe{
+  height:5px;border-radius:24px 24px 0 0;
+  background:linear-gradient(90deg,var(--gold),var(--teal));
+  transition:background .3s;
+}
+
+.modal-content{padding:28px 32px 32px}
+
+.modal-top{
+  display:flex;align-items:flex-start;
+  justify-content:space-between;margin-bottom:22px;
+}
+.modal-cat-label{
+  font-size:.63rem;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:var(--teal);margin-bottom:5px;
+}
+.modal-title-text{
+  font-family:'Bebas Neue',cursive;
+  font-size:2.4rem;letter-spacing:1px;
+  display:flex;align-items:center;gap:12px;
+  line-height:1;
+}
+.close-x{
+  width:40px;height:40px;border-radius:50%;
+  border:1.5px solid var(--border2);
+  background:rgba(255,255,255,0.04);
+  color:var(--muted);font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;flex-shrink:0;
+  transition:background .18s,border-color .18s,color .18s;
+}
+.close-x:hover{background:rgba(232,184,75,0.18);border-color:var(--gold);color:var(--gold)}
+
+/* quick stats row */
+.modal-quick-stats{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px;
+}
+.qs-badge{
+  display:flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid var(--border2);
+  border-radius:10px;padding:8px 14px;
+  font-size:.78rem;
+}
+.qs-icon{font-size:1rem}
+.qs-label{color:var(--muted);font-size:.65rem;display:block;margin-bottom:1px}
+.qs-val{font-weight:600;color:var(--text);font-size:.82rem}
+
+.video-wrap{
+  border-radius:14px;overflow:hidden;
+  background:#000;
+  box-shadow:0 10px 40px rgba(0,0,0,0.5);
+  margin-bottom:24px;
+}
+.video-wrap video{width:100%;display:block;max-height:420px}
+
+.no-video{
+  background:rgba(255,255,255,0.02);
+  border-radius:14px;padding:60px 20px;
+  text-align:center;border:1px dashed var(--border);
+  margin-bottom:24px;
+}
+.no-video .nv-icon{font-size:3.2rem;margin-bottom:10px}
+.no-video strong{display:block;font-size:1rem;color:var(--text);margin-bottom:6px}
+.no-video small{color:var(--muted);font-size:.78rem;background:rgba(255,255,255,0.05);padding:4px 12px;border-radius:6px;display:inline-block;margin-top:8px;font-family:monospace}
+
+/* info sections */
+.info-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;margin-bottom:14px;
+}
+@media(max-width:560px){.info-grid{grid-template-columns:1fr}}
+.info-box{
+  background:rgba(255,255,255,0.025);
+  border:1px solid var(--border2);
+  border-radius:14px;padding:18px;
+}
+.info-box h4{
+  font-size:.68rem;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.info-box h4 span{font-size:1rem}
+.muscle-list{display:flex;flex-wrap:wrap;gap:6px}
+.muscle-tag{
+  font-size:.7rem;font-weight:600;
+  padding:4px 10px;border-radius:99px;
+  background:rgba(232,184,75,0.1);
+  border:1px solid rgba(232,184,75,0.2);
+  color:var(--gold2);
+}
+.tips-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.tips-list li{
+  font-size:.8rem;color:var(--muted);
+  padding-left:16px;position:relative;line-height:1.5;
+}
+.tips-list li::before{content:'→';position:absolute;left:0;color:var(--teal);font-size:.75rem}
+
+.benefits-row{
+  background:rgba(46,196,182,0.05);
+  border:1px solid rgba(46,196,182,0.15);
+  border-radius:14px;padding:16px 18px;
+  margin-bottom:14px;
+}
+.benefits-row h4{
+  font-size:.68rem;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--teal);margin-bottom:10px;
+  display:flex;align-items:center;gap:8px;
+}
+.benefit-tags{display:flex;flex-wrap:wrap;gap:8px}
+.benefit-tag{
+  font-size:.75rem;color:var(--text);
+  background:rgba(46,196,182,0.1);
+  border:1px solid rgba(46,196,182,0.2);
+  padding:5px 12px;border-radius:99px;
+  display:flex;align-items:center;gap:5px;
+}
+
+/* progress bar in modal */
+.intensity-bar-wrap{
+  margin-top:8px;
+  background:rgba(255,255,255,0.05);
+  border-radius:99px;height:6px;overflow:hidden;
+}
+.intensity-bar{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--teal),var(--gold));
+  transition:width 1s cubic-bezier(.17,.67,.5,1.2);
+  width:0;
+}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;
+  padding:30px 24px;
+  border-top:1px solid var(--border);
+  color:var(--muted);font-size:.78rem;line-height:1.9;
+  position:relative;z-index:1;
+}
+footer strong{color:var(--gold)}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--card2);border:1.5px solid var(--border);
+  border-radius:12px;padding:12px 22px;
+  font-size:.82rem;color:var(--text);
+  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  transition:transform .3s cubic-bezier(.34,1.46,.64,1),opacity .3s;
+  opacity:0;z-index:9999;white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+@media(max-width:600px){
+  .topbar{padding:12px 16px}
+  .today-inner{flex-direction:column;text-align:center}
+  .today-cta{margin:0 auto}
+  .modal-content{padding:20px}
+  .info-grid{grid-template-columns:1fr}
+  h1{font-size:3.5rem}
+  .grid{padding:0 14px 60px;gap:12px}
+  body{cursor:auto}
+  #cursor,#cursor-ring{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<canvas id="particleCanvas"></canvas>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <div class="emblem">🏫</div>
+    <div class="school-name">
+      <strong>Hasan Harakani Anadolu Lisesi</strong>
+      <span>Kars — TÜBİTAK 4006-A Bilim Fuarı</span>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <button class="today-badge" id="todayBtn">✨ Günün Hareketi</button>
+    <div class="tubitak-badge">TÜBİTAK 4006-A</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-label">🎖️ Spor Bilimleri Projesi — 2025</div>
+  <h1>Spor<br><span class="line2">Hareketleri</span></h1>
+  <p class="hero-sub">12 farklı spor hareketini keşfet, videosunu izle, kas gruplarını öğren ve teknik ipuçlarını incele.</p>
+</section>
+
+<!-- STATS -->
+<div class="stats" id="statsBar">
+  <div class="stat">
+    <div class="stat-num" data-count="12">0</div>
+    <div class="stat-lbl">Hareket</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" data-count="6">0</div>
+    <div class="stat-lbl">Spor Dalı</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" data-count="4006">0</div>
+    <div class="stat-lbl">TÜBİTAK</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num" data-count="2025">0</div>
+    <div class="stat-lbl">Proje Yılı</div>
+  </div>
+</div>
+
+<!-- TODAY WIDGET -->
+<div class="today-widget">
+  <div class="today-inner" id="todayWidget">
+    <div class="today-icon" id="todayIcon">🏃</div>
+    <div class="today-text">
+      <div class="today-label">✦ Günün Önerilen Hareketi</div>
+      <div class="today-name" id="todayName">Koşmak</div>
+      <div class="today-desc" id="todayDesc">Kardiyovasküler sistemi güçlendirir, dayanıklılığı artırır.</div>
+    </div>
+    <div class="today-cta">Videoya Git →</div>
+  </div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Hareket ara..."/>
+  </div>
+  <div class="filters">
+    <button class="filter-btn active" data-cat="tümü">Tümü</button>
+    <button class="filter-btn" data-cat="kardio">Kardio</button>
+    <button class="filter-btn" data-cat="esneklik">Esneklik</button>
+    <button class="filter-btn" data-cat="kuvvet">Kuvvet</button>
+    <button class="filter-btn" data-cat="denge">Denge</button>
+    <button class="filter-btn" data-cat="beceri">Beceri</button>
+    <button class="filter-btn" data-cat="ritim">Ritim</button>
+  </div>
+</div>
+
+<!-- SECTION HEAD -->
+<div class="section-head">
+  <h2>Hareket <span>Seç</span></h2>
+  <p id="resultCount" class="result-count"><span>12</span> hareket listeleniyor</p>
+</div>
+
+<!-- GRID -->
+<div class="grid" id="grid"></div>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay">
+  <div class="modal" id="modalBox">
+    <div class="modal-stripe" id="mStripe"></div>
+    <div class="modal-content">
+      <div class="modal-top">
+        <div class="modal-info">
+          <div class="modal-cat-label" id="mCat">Spor Hareketi</div>
+          <div class="modal-title-text">
+            <span id="mIcon"></span>
+            <span id="mTitle"></span>
+          </div>
+        </div>
+        <button class="close-x" id="closeBtn" aria-label="Kapat">✕</button>
+      </div>
+      <!-- quick stats -->
+      <div class="modal-quick-stats" id="mQuickStats"></div>
+      <!-- video -->
+      <div id="videoWrap"></div>
+      <!-- benefits -->
+      <div class="benefits-row" id="mBenefits"></div>
+      <!-- info grid -->
+      <div class="info-grid">
+        <div class="info-box">
+          <h4><span>💪</span> Çalışan Kaslar</h4>
+          <div class="muscle-list" id="mMuscles"></div>
+        </div>
+        <div class="info-box">
+          <h4><span>📋</span> Teknik İpuçları</h4>
+          <ul class="tips-list" id="mTips"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Hasan Harakani Anadolu Lisesi</strong> &nbsp;·&nbsp; Kars &nbsp;·&nbsp; TÜBİTAK 4006-A Bilim Fuarı<br>
+  <span style="font-size:.72rem;">Spor Hareketleri Analiz Projesi &nbsp;·&nbsp; 2025</span>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────
+// VERİ
+// ─────────────────────────────────────────────
+const moves = [
+  {
+    id:1,name:"Touch Your Toes",icon:"🤸",file:"touch_your_toes.mp4",
+    cat:"esneklik",difficulty:1,cal:"40–60",duration:"10 dk",
+    desc:"Hamstring ve sırt kaslarını uzatan temel esneklik egzersizi.",
+    muscles:["Hamstring","Baldır","Bel Kasları","Gluteus"],
+    tips:["Dizleri hafifçe bükün","Yavaş ve kontrollü inin","10 saniye tutun","Solunum almayı unutmayın"],
+    benefits:["🧘 Esneklik","🦵 Hamstring","🔄 Kan Dolaşımı","💤 Toparlanma"],
+    intensity:30
+  },
+  {
+    id:2,name:"Boks Hareketleri",icon:"🥊",file:"box.mp4",
+    cat:"kuvvet",difficulty:3,cal:"200–300",duration:"20 dk",
+    desc:"Üst vücut gücü ve kardiovasküler dayanıklılık geliştiren müthiş kombinasyon.",
+    muscles:["Deltoid","Triceps","Omuz","Göğüs","Sırt","Core"],
+    tips:["Duruşa dikkat et","Yumruk sonrası geri çek","Core'u sık","Ayak pozisyonunu koru"],
+    benefits:["💪 Üst Güç","🫀 Kardio","🧠 Koordinasyon","⚡ Çeviklik"],
+    intensity:80
+  },
+  {
+    id:3,name:"Koşmak",icon:"🏃",file:"kosmak.mp4",
+    cat:"kardio",difficulty:2,cal:"300–500",duration:"30 dk",
+    desc:"En temel kardio egzersizi. Tüm vücudu çalıştırır, dayanıklılığı artırır.",
+    muscles:["Quadriceps","Hamstring","Baldır","Gluteus","Core"],
+    tips:["Topuktan değil ortadan bas","Dik dur","Kolları 90° tut","Nefes ritmini koru"],
+    benefits:["🫀 Kalp Sağlığı","🔥 Yağ Yakımı","🦴 Kemik Yoğunluğu","😊 Ruh Hali"],
+    intensity:65
+  },
+  {
+    id:4,name:"Voleybol Servis",icon:"🏐",file:"voleybol_servis.mp4",
+    cat:"beceri",difficulty:2,cal:"120–180",duration:"15 dk",
+    desc:"Omuz koordinasyonu ve güç aktarımı gerektiren teknik hareket.",
+    muscles:["Deltoid","Rotator Cuff","Triceps","Core","Bacak Kasları"],
+    tips:["Topa göz kırpma","Vuruş anında bileği hızlandır","Vücut rotasyonunu kullan","Takip hareketi yap"],
+    benefits:["🏐 Koordinasyon","🦾 Üst Kuvvet","🎯 Hedefleme","🔄 Omuz Sağlığı"],
+    intensity:50
+  },
+  {
+    id:5,name:"Futbol Şut",icon:"⚽",file:"futbol_sut.mp4",
+    cat:"kuvvet",difficulty:3,cal:"150–220",duration:"15 dk",
+    desc:"Bacak kuvveti, denge ve koordinasyon bir arada. Güç transferi mükemmel.",
+    muscles:["Quadriceps","Hamstring","Gluteus","Baldır","Core","Kalça Fleksörü"],
+    tips:["Destek ayak topu yanında","Ayak bileğini kilitle","Kalçayı döndür","Kol dengesi sağla"],
+    benefits:["⚽ Güç","🦵 Bacak Kuvveti","⚖️ Denge","🎯 Kesinlik"],
+    intensity:70
+  },
+  {
+    id:6,name:"Futbol Dribling",icon:"🦶",file:"futbol_dribling.mp4",
+    cat:"beceri",difficulty:3,cal:"200–350",duration:"20 dk",
+    desc:"Hız, çeviklik ve top kontrolü gerektiren dinamik beceri hareketi.",
+    muscles:["Baldır","Quadriceps","Core","Ayak Bileği","Hamstring"],
+    tips:["Topu yakın tut","Hızlı küçük adımlar at","Baş yukarıda dur","Yön değiştir"],
+    benefits:["⚡ Çeviklik","🧠 Koordinasyon","🏃 Hız","🦶 Ayak Becerisi"],
+    intensity:75
+  },
+  {
+    id:7,name:"Top Fırlatma",icon:"🤾",file:"top_firlatma.mp4",
+    cat:"kuvvet",difficulty:2,cal:"100–160",duration:"12 dk",
+    desc:"El-göz koordinasyonu ve üst vücut gücünü birleştiren fonksiyonel hareket.",
+    muscles:["Deltoid","Trapez","Biceps","Forearm","Core","Rotator Cuff"],
+    tips:["Omuz hizasından fırlat","Bilek snapini kullan","Gözünü hedefe dik","Core'u aktif tut"],
+    benefits:["🎯 Hedefleme","🦾 Üst Güç","🔄 Omuz Mobilite","🧠 Koordinasyon"],
+    intensity:55
+  },
+  {
+    id:8,name:"Basketbol Bouncing",icon:"🏀",file:"basketbol_bouncing.mp4",
+    cat:"beceri",difficulty:2,cal:"120–200",duration:"15 dk",
+    desc:"Ritim, koordinasyon ve el kontrolü gerektiren temel basketbol becerisi.",
+    muscles:["Forearm","Biceps","Deltoid","Core","Diz","Baldır"],
+    tips:["Topu parmak uçlarıyla kontrol et","Göğüs hizasında tut","Ritmi koru","İki eli kullan"],
+    benefits:["🏀 Beceriklilik","🎵 Ritim","⚡ Çeviklik","🧠 El-Göz Koordinasyonu"],
+    intensity:45
+  },
+  {
+    id:9,name:"Zıplama",icon:"🦘",file:"ziplama.mp4",
+    cat:"kardio",difficulty:2,cal:"300–450",duration:"15 dk",
+    desc:"Patlayıcı güç ve kardio kapasitesini aynı anda geliştiren etkili hareket.",
+    muscles:["Quadriceps","Gluteus","Baldır","Hamstring","Core"],
+    tips:["Yumuşak in","Diz çarpmasını önle","Kolları sallan","Topuktan değil önden bas"],
+    benefits:["💥 Patlayıcı Güç","🫀 Kardio","🦴 Kemik","🦵 Bacak Kuvveti"],
+    intensity:70
+  },
+  {
+    id:10,name:"Denge Hareketi",icon:"🧘",file:"balance.mp4",
+    cat:"denge",difficulty:2,cal:"60–100",duration:"10 dk",
+    desc:"Propriosepsiyon, core stabilitesi ve zihinsel odaklanmayı birlikte geliştirir.",
+    muscles:["Core","Ayak Bileği","Tibia","Gluteus","Sırt"],
+    tips:["Gözü sabit bir noktaya dik","Core'u sık","Nefes düzenini koru","Yavaş pozisyon gir"],
+    benefits:["⚖️ Denge","🧠 Odak","🦴 Eklem Sağlığı","💪 Core Güç"],
+    intensity:40
+  },
+  {
+    id:11,name:"Stomp Your Feet",icon:"👟",file:"stomp_your_feet.mp4",
+    cat:"ritim",difficulty:1,cal:"80–130",duration:"10 dk",
+    desc:"Ritim duygusu, koordinasyon ve ayak becerisi geliştiren eğlenceli hareket.",
+    muscles:["Baldır","Quadriceps","Hamstring","Ayak Bileği","Kalça"],
+    tips:["Ritme uyu","Diz absorpsiyonu kullan","Vücudu rahat tut","Tempo artır"],
+    benefits:["🎵 Ritim","🦶 Ayak Becerisi","😊 Eğlence","🤝 Koordinasyon"],
+    intensity:35
+  },
+  {
+    id:12,name:"Dans (Halay)",icon:"💃",file:"dans_halay.mp4",
+    cat:"ritim",difficulty:2,cal:"200–300",duration:"20 dk",
+    desc:"Geleneksel Türk dansı. Ritim, koordinasyon ve sosyal enerji bir arada.",
+    muscles:["Bacak Kasları","Core","Omuz","Kalça","Baldır"],
+    tips:["Müziği hisset","Adımları say","Omuz hareketlerine dikkat","Grubu takip et"],
+    benefits:["🎉 Kültür","🎵 Ritim","🤝 Sosyal","💃 Koordinasyon"],
+    intensity:60
+  }
+];
+
+const catColors = {
+  esneklik:"#ff6b6b",kardio:"#2ec4b6",kuvvet:"#9b59b6",
+  denge:"#4caf7d",beceri:"#e8b84b",ritim:"#f39c12"
+};
+
+// ─────────────────────────────────────────────
+// PARTICLES
+// ─────────────────────────────────────────────
+(function(){
+  const c=document.getElementById('particleCanvas');
+  const ctx=c.getContext('2d');
+  let W,H,pts=[];
+  function resize(){W=c.width=innerWidth;H=c.height=innerHeight}
+  resize();window.addEventListener('resize',resize);
+  for(let i=0;i<60;i++){
+    pts.push({
+      x:Math.random()*innerWidth,y:Math.random()*innerHeight,
+      r:Math.random()*1.5+.3,
+      vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
+      a:Math.random()
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(232,184,75,${p.a*0.4})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─────────────────────────────────────────────
+// CURSOR
+// ─────────────────────────────────────────────
+const cur=document.getElementById('cursor');
+const ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+
+// ─────────────────────────────────────────────
+// COUNTER ANIMATION
+// ─────────────────────────────────────────────
+function animateCounter(el,target,dur=1800){
+  let start=null;
+  function step(ts){
+    if(!start)start=ts;
+    const p=Math.min((ts-start)/dur,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(ease*target).toLocaleString();
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('[data-count]').forEach(el=>{
+        animateCounter(el,+el.dataset.count);
+        delete el.dataset.count;
+      });
+      obs.unobserve(e.target);
+    }
+  });
+});
+obs.observe(document.getElementById('statsBar'));
+
+// ─────────────────────────────────────────────
+// TODAY WIDGET
+// ─────────────────────────────────────────────
+const todayIdx = new Date().getDay() % moves.length;
+const todayMove = moves[todayIdx];
+document.getElementById('todayIcon').textContent=todayMove.icon;
+document.getElementById('todayName').textContent=todayMove.name;
+document.getElementById('todayDesc').textContent=todayMove.desc;
+document.getElementById('todayWidget').addEventListener('click',()=>openModal(todayMove));
+document.getElementById('todayBtn').addEventListener('click',()=>openModal(todayMove));
+
+// ─────────────────────────────────────────────
+// BUILD CARDS
+// ─────────────────────────────────────────────
+const grid=document.getElementById('grid');
+moves.forEach(m=>{
+  const card=document.createElement('div');
+  card.className='card';
+  card.dataset.cat=m.cat;
+  card.dataset.name=m.name.toLowerCase();
+  const dots=[1,2,3].map(d=>`<div class="diff-dot ${d<=m.difficulty?'active':''}"></div>`).join('');
+  card.innerHTML=`
+    <div class="card-stripe"></div>
+    <div class="card-body">
+      <div class="icon-ring">
+        ${m.icon}
+        <div class="card-num">${m.id}</div>
+      </div>
+      <div class="card-title">${m.name}</div>
+      <div class="card-cat">${m.cat.charAt(0).toUpperCase()+m.cat.slice(1)}</div>
+      <div class="card-meta">
+        <div class="difficulty">${dots}</div>
+        <div class="cal-badge">~<span>${m.cal}</span> kcal</div>
+      </div>
+    </div>
+    <div class="play-tag">Videoyu Oynat</div>`;
+  card.addEventListener('click',()=>openModal(m));
+  grid.appendChild(card);
+});
+
+// ─────────────────────────────────────────────
+// FILTER + SEARCH
+// ─────────────────────────────────────────────
+let activeFilter='tümü',searchVal='';
+function applyFilters(){
+  const cards=document.querySelectorAll('.card');
+  let visible=0;
+  cards.forEach(c=>{
+    const catMatch=activeFilter==='tümü'||c.dataset.cat===activeFilter;
+    const searchMatch=!searchVal||c.dataset.name.includes(searchVal);
+    if(catMatch&&searchMatch){c.classList.remove('hidden');visible++;}
+    else c.classList.add('hidden');
+  });
+  document.querySelector('#resultCount span').textContent=visible;
+}
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeFilter=btn.dataset.cat;
+    applyFilters();
+  });
+});
+document.getElementById('searchInput').addEventListener('input',e=>{
+  searchVal=e.target.value.toLowerCase().trim();
+  applyFilters();
+});
+
+// ─────────────────────────────────────────────
+// MODAL
+// ─────────────────────────────────────────────
+const overlay=document.getElementById('overlay');
+const closeBtn=document.getElementById('closeBtn');
+
+function openModal(m){
+  document.getElementById('mCat').textContent=m.cat.charAt(0).toUpperCase()+m.cat.slice(1)+' Hareketi';
+  document.getElementById('mIcon').textContent=m.icon;
+  document.getElementById('mTitle').textContent=m.name;
+
+  // stripe color
+  const stripe=document.getElementById('mStripe');
+  const col=catColors[m.cat]||'var(--gold)';
+  stripe.style.background=`linear-gradient(90deg,${col},var(--gold))`;
+
+  // quick stats
+  const qs=document.getElementById('mQuickStats');
+  qs.innerHTML=`
+    <div class="qs-badge"><span class="qs-icon">⏱️</span><div><span class="qs-label">Süre</span><span class="qs-val">${m.duration}</span></div></div>
+    <div class="qs-badge"><span class="qs-icon">🔥</span><div><span class="qs-label">Kalori</span><span class="qs-val">${m.cal} kcal</span></div></div>
+    <div class="qs-badge"><span class="qs-icon">📊</span><div><span class="qs-label">Zorluk</span><span class="qs-val">${['','Kolay','Orta','Zor'][m.difficulty]}</span></div></div>
+    <div class="qs-badge"><span class="qs-icon">🏷️</span><div><span class="qs-label">Kategori</span><span class="qs-val">${m.cat.charAt(0).toUpperCase()+m.cat.slice(1)}</span></div></div>`;
+
+  // video
+  const vw=document.getElementById('videoWrap');
+  if(m.file){
+    vw.innerHTML=`<div class="video-wrap"><video controls autoplay playsinline><source src="videos/${m.file}" type="video/mp4">Tarayıcınız video desteklemiyor.</video></div>`;
+  } else {
+    vw.innerHTML=`<div class="no-video"><div class="nv-icon">🎬</div><strong>Video Henüz Eklenmedi</strong><br><small>videos/${m.file||m.name.toLowerCase().replace(/\s+/g,'_')}.mp4</small></div>`;
+  }
+
+  // benefits
+  const bRow=document.getElementById('mBenefits');
+  bRow.innerHTML=`<h4>✅ Faydaları</h4><div class="benefit-tags">${m.benefits.map(b=>`<div class="benefit-tag">${b}</div>`).join('')}</div>`;
+
+  // muscles
+  document.getElementById('mMuscles').innerHTML=m.muscles.map(ms=>`<div class="muscle-tag">${ms}</div>`).join('');
+
+  // tips
+  document.getElementById('mTips').innerHTML=m.tips.map(t=>`<li>${t}</li>`).join('');
+
+  overlay.classList.add('open');
+  document.body.style.overflow='hidden';
+
+  // animate intensity bar
+  setTimeout(()=>{
+    const bar=document.querySelector('.intensity-bar');
+    if(bar)bar.style.width=m.intensity+'%';
+  },100);
+
+  showToast(`${m.icon} ${m.name} açıldı`);
+}
+
+function closeModal(){
+  overlay.classList.remove('open');
+  document.body.style.overflow='';
+  const v=document.querySelector('#videoWrap video');
+  if(v)v.pause();
+}
+
+closeBtn.addEventListener('click',closeModal);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+// ─────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+// ─────────────────────────────────────────────
+// SCROLL FADE-IN for cards
+// ─────────────────────────────────────────────
+const cardObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0) scale(1)';cardObs.unobserve(e.target);}
+  });
+},{threshold:.08});
+document.querySelectorAll('.card').forEach(c=>{
+  c.style.opacity='0';c.style.transform='translateY(30px) scale(.97)';
+  c.style.transition='opacity .5s ease,transform .5s ease';
+  cardObs.observe(c);
+});
+</script>
+</body>
+</html>
